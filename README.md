@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# 概念
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React DnD 是一组 React 高阶组件，使用的时候只需要使用对应的 API 将目标组件进行包裹，即可实现拖动或接受拖动元素的功能。将拖动的事件转换成对象中对应状态的形式，不需要开发者自己判断拖动状态，只需要在传入的 spec 对象中各个状态属性中做对应处理即可。刚刚接触可能难以理解，真正熟悉用法之后会感觉很方便。
 
-## Available Scripts
+## 安装
 
-In the project directory, you can run:
+需要安装react-dnd，react-dnd-html5-backend
+react-dnd版本:^11.1.3(支持hooks写法)
+react-dnd-html5-backend版本:^11.1.3(利用html5的拖放api)
 
-### `yarn start`
+### 关键API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**useDrag**：用于包装你需要拖动的组件，使组件能够被拖拽
+**useDrop**：用于包装接收拖拽元素的组件，使组件能够放置
+**DndProvider**：用于包装拖拽根组件
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 其他参数说明
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**useDrag**：接受一个对象，返回结果为【collectedProps，drag】用drap包裹的dom可以被拖动，配置项有【begin(monitor),end(item, monitor),canDrag(monitor),isDragging(monitor),collect】
+**useDrop**：接受一个对象，返回结果为【collectedProps，drop】用drap包裹的dom可以放置，配置项有【item，drop(item,monitor),hover(item, monitor),canDrop(item, monitor),collect】
+**DragSourceMonitor**：内置方法【canDrag,isDragging,getItemType,getItem,getDropResult,didDrop,getInitialClientOffset,getInitialSourceClientOffset,getClientOffset,getDifferenceFromInitialOffset,getSourceClientOffset】
+**DropSourceMonitor**：内置方法【canDrop,isOver,getItemType,getItem,getDropResult,didDrop,getInitialClientOffset,getInitialSourceClientOffset,getClientOffset,getDifferenceFromInitialOffset,getSourceClientOffset】
