@@ -1,0 +1,24 @@
+.app{
+    display: flex;
+    height: 100vh;
+    background: #ebf5fc;
+    overflow: hidden;
+    .menu{
+        width: 200px;
+        background: #001529;
+        .menu_item{
+            display: block;
+            padding: 10px;
+            text-align: center;
+            color: hsla(0,0%,100%,.65);
+            &.active{
+                background: #1890ff;
+                color: #fff;
+            }
+        }
+    }
+    .demo_container{
+        flex: 1;
+        overflow: auto;
+    }
+}
